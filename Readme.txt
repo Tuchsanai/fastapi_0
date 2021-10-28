@@ -1,7 +1,22 @@
 ######################################
 # Run only first time
+
+#Window  run
 python -m venv env
 .\env\Scripts\activate
+
+# On Unix or MacOS, run:
+python -m venv env
+source env/bin/activate
+
+# On vscode
+virtualenv env
+On Unix or MacOS, run: 
+source env/bin/activate
+Wundows :  
+.\env\Scripts\activate
+
+
 pip install -r requirements.txt
 
 ######################################
@@ -11,6 +26,13 @@ pip freeze > requirements.txt
 ######################################
 # Activate Environment
 .\env\Scripts\activate
+
+# On Unix or MacOS, run:
+source env/bin/activate
+
+######################################
+# Run fast api 
+uvicorn main:app --reload
 
 ######################################
 # Build Docker
