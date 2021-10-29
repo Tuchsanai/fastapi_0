@@ -1,9 +1,9 @@
 from typing import Optional
-
 from fastapi import FastAPI
-from enum import Enum
+from router import blog_get
 
 app = FastAPI()
+app.include_router(blog_get.routerget)
 
 
 @app.get("/")
@@ -17,7 +17,3 @@ def get(a : int, b : Optional[int]=15) :
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Optional[str] = None):
     return {"item_id": item_id, "q": q}
-
-@app.get('/blog/type/{type}', tags=['zzz'])
-def get_blog_type(type: int):
-  return {'message': f'Blog type {type}'}    
