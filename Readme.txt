@@ -4,19 +4,21 @@
 #Window  run
 python -m venv env
 .\env\Scripts\activate
+pip install -r requirements.txt
 
 # On Unix or MacOS, run:
 python -m venv env
 source env/bin/activate
+pip install -r requirements.txt
 
 # On vscode
+#On Unix or MacOS, run: 
 virtualenv env
-On Unix or MacOS, run: 
 source env/bin/activate
-Wundows :  
+pip install -r requirements.txt
+#Windows :  
+virtualenv env
 .\env\Scripts\activate
-
-
 pip install -r requirements.txt
 
 ######################################
