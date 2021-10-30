@@ -1,19 +1,13 @@
 from typing import Optional
 from fastapi import FastAPI
-from router import blog_get
+from router import blog_get, blog_post
 
 app = FastAPI()
 app.include_router(blog_get.routerget)
+app.include_router(blog_post.routerget)
 
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "This is demo"}
 
-@app.get("/get/")
-def get(a : int, b : Optional[int]=15) :
-    return { 'message': f' a = {a} b= {b}'  }
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
