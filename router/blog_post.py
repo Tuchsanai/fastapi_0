@@ -21,7 +21,7 @@ class BlogModel(BaseModel):
     image: Optional[Image] = None
 
 @router_post.post('/new/{id}')
-def create_blog(blog: BaseModel, id: int, version: int = 1):
+def create_blog(blog: BlogModel, id: int, version: int = 1):
   return {
     'id': id,
     'data': blog,
