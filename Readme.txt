@@ -4,7 +4,7 @@
 #Window  run
 python -m venv env
 .\env\Scripts\activate
-pip install -r -q requirements.txt
+pip install -r  requirements.txt
 
 # On Unix or MacOS, run:
 python -m venv env
