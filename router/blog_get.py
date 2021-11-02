@@ -1,19 +1,28 @@
 from fastapi import APIRouter, Response, status
+from fastapi import Query, Body, Path
 from enum import Enum
-from typing import Optional
+from typing import Optional,List, Dict
 from pydantic import BaseModel
 
+import numpy as np
 
-routerget = APIRouter(prefix='/blog_get', tags=['blog'])
+routerget = APIRouter(prefix='/blog_get', tags=['blog_get'])
 
 class BlogModel(BaseModel):
-    url: str
-    alias: str
+    url: str = 'gg'
+    alias: str ='zz'
+    vblog : List[float] =[1.0,3.0]
+
+@routerget.get('/test_data')
+def test_data(blog : BlogModel ,id = 1, page_size: Optional[int] = None, v: Optional[List[float]] = Query( np.random.randn(3).tolist() )  ):
+    print(type(np.array(v)))
+    print(np.array(v).shape)
+    return {'blog':blog,'message': f'id = {id} page = {page_size} , v={v}'}
 
 
-@routerget.get('/bdata')
-def get2(blog: BlogModel ,page = 1, page_size: Optional[int] = None):
-  return {'blog':blog,'message': f'All {page_size} blogs on page {page}'}
+# @routerget.get('/bdata')
+# def get2(blog: BlogModel ,page = 1, page_size: Optional[int] = None, v: List[int] = Query([1,5,6])  ):
+#   return {'blog':blog,'message': f'All {page_size} blogs on page {page}','v':v}
 
 
 

@@ -2,9 +2,7 @@ from typing import Optional, List, Dict
 from fastapi import APIRouter, Query, Body, Path
 from pydantic import BaseModel
 
-router_post = APIRouter(
-    prefix='/blog',
-    tags=['blog']
+router_post = APIRouter(prefix='/blog_post',tags=['blog_post']
 )
 
 class Image(BaseModel):
