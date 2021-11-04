@@ -1,6 +1,8 @@
 from typing import Optional
 from fastapi import FastAPI,Query, Body, Path
 from router import blog_get, blog_post
+from router import user,product
+
 
 app = FastAPI()
 app.include_router(blog_get.routerget)
