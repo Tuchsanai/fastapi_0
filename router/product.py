@@ -40,7 +40,7 @@ def create_cookie():
 
 
 @router.get('/all')
-def get_all_products():
+def get_all_products(response: Response):
   # return products
   data = " ".join(products)
   response = Response(content=data, media_type="text/plain")
@@ -48,22 +48,9 @@ def get_all_products():
   response.headers['custom_response_header'] = 'test header'
   return response
 
-
-@router.post('/all')
-def get_all_products():
-  # return products
-  data = " ".join(products)
-  response = Response(content=data, media_type="text/plain")
-  response.set_cookie(key="test_cookie", value="test_cookie_value")
-  response.headers['custom_response_header'] = 'test header'
-  return response
 
 @router.post('/withheader')
-def get_products(
-  response: Response,
-  custom_header: Optional[List[str]] = Header(None),
-  test_cookie: Optional[str] = Cookie(None)
-  ):
+def get_products( response: Response, custom_header: Optional[List[str]] = Header(None),  test_cookie: Optional[str] = Cookie(None)  ):
   if custom_header:
     response.headers['custom_response_header'] = " and ".join(custom_header)
   return {
