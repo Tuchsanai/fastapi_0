@@ -15,4 +15,3 @@ app.include_router(product.router)
 @app.get("/")
 def read_root():
     return {"Hello": "This is demo"}
-
